@@ -11,7 +11,7 @@ public class Customer {
 	protected byte age;
 	protected String Gender;
 	protected IdProof personalID;
-	protected Account Account;
+	protected Account account;
 	protected Beneficiary beneficiary;
 	
 	
@@ -85,10 +85,10 @@ public class Customer {
 		this.personalID = personalID;
 	}
 	public Account getAccount() {
-		return Account;
+		return account;
 	}
 	public void setAccount(Account account) {
-		Account = account;
+		this.account = account;
 	}
 	
 	
