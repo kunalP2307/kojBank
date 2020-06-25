@@ -4,6 +4,8 @@ public class TestBank {
 		Customer c1 = new Customer();
 		Branch.openAccount(c1);
 		// hello
+		//hi
+		//hello
 	}
 }
 
