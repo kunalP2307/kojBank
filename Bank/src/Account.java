@@ -59,7 +59,7 @@ public abstract class Account {
 	public abstract void manageFDnRD();*/
 	
 	
-	public static Account acceptAccountType() {
+	public static Account setAccountType() {
 		boolean validChoice = false;
 		Scanner Scan = new Scanner(System.in);
 		byte choice=0,choice2=0;
@@ -99,7 +99,6 @@ public abstract class Account {
 				switch(choice2) {
 					case 1:
 						BSBD B = new BSBD();
-						B.createAccount();
 						return  (BSBD)B;
 					
 					case 2:
@@ -148,8 +147,8 @@ public abstract class Account {
 	
 	public static Customer setAccountDetails(Customer C) {
 		System.out.println("\n\t ~Account Details  ");
-		C.setAccount(Account.acceptAccountType());
-
+		C.setAccount(Account.setAccountType());
+		C.account.createAccount();
 		return C;
 	}
 }
