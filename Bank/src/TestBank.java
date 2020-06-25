@@ -1,13 +1,7 @@
 public class TestBank {
-	public static void main(String Args[]) throws Exception{
-		//inside Main
+	public static void main(String Args[]) {
 		Customer c1 = new Customer();
 		Branch.openAccount(c1);
-		// hello
-		//hi
-		//hello
-//hey
-		///kunal aerstr
 	}
 }
 
