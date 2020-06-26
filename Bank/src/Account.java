@@ -149,6 +149,10 @@ public abstract class Account {
 		System.out.println("\n\t ~Account Details  ");
 		C.setAccount(Account.setAccountType());
 		C.account.createAccount();
+		if(C.account instanceof FixedDeposit) {
+			FixedDeposit Fd = (FixedDeposit)C.account;
+			System.out.println(Fd.getIntrestRate());
+		}
 		return C;
 	}
 }

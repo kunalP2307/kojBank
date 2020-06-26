@@ -11,7 +11,6 @@ public class BSBD  extends SavingsAccount{
 		chargesForNotMaintaingTheMinBalance = 80f;
 		maintenanceCharges = 150;
 	}
-	
 	public void createAccount() {
 		Scanner Sc = new Scanner(System.in);
 		do{
@@ -28,5 +27,4 @@ public class BSBD  extends SavingsAccount{
 		}while(true);
 	}
 
-	
 }
