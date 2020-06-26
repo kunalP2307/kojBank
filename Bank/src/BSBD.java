@@ -26,6 +26,10 @@ public class BSBD  extends SavingsAccount{
 					continue;
 				}
 		}while(true);
+		if(accBalance<1500) {
+			System.out.println("80 rupees applies as charges for not maintaining minimum balance in account");
+			
+		}
 	}
 
 	
