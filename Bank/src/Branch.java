@@ -57,9 +57,7 @@ interface Branch {
 	}
 	
 	static void openAccount(Customer C) {
-	//	C = Customer.setCustDetails(C);
+		C = Customer.setCustDetails(C);
 		C = Account.setAccountDetails(C);
-		
 	}
-
 }

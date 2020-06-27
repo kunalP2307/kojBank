@@ -50,9 +50,8 @@ public abstract class Account {
 	}
 	public abstract void  createAccount(); 
 	
-	/*public abstract void accStatement();
 	
-	public abstract void manageLoans();
+	/*public abstract void manageLoans();
 	
 	public abstract void manageCards();
 	
@@ -61,6 +60,7 @@ public abstract class Account {
 	
 	public static Account setAccountType() {
 		boolean validChoice = false;
+		String Ch;
 		Scanner Scan = new Scanner(System.in);
 		byte choice=0,choice2=0;
 		while(validChoice == false){
@@ -107,8 +107,8 @@ public abstract class Account {
 				}
 				
 			case 2:
-				CurrentAccount C = new CurrentAccount();
-				return (CurrentAccount)C;
+				CurrentAccount Cr = new CurrentAccount();
+				return (CurrentAccount)Cr;
 			
 			case 3:
 				switch(choice2) {
@@ -119,7 +119,6 @@ public abstract class Account {
 					case 2:
 						FixedDeposit FD = new FixedDeposit();
 						return (FixedDeposit)FD;
-						
 				}
 			
 			case 4:
@@ -149,10 +148,6 @@ public abstract class Account {
 		System.out.println("\n\t ~Account Details  ");
 		C.setAccount(Account.setAccountType());
 		C.account.createAccount();
-		if(C.account instanceof FixedDeposit) {
-			FixedDeposit Fd = (FixedDeposit)C.account;
-			System.out.println(Fd.getIntrestRate());
-		}
 		return C;
 	}
 }

@@ -3,9 +3,18 @@ import java.util.Scanner;
 public class FixedDeposit extends TermDeposit{
 	public static double intsrestRates[] = {3.50,4.00,5.00,5.40,5.60,6.00,6.60,6.70};
 	public static String maturityPeroidImDays[] = {"7-14","15-30","31-45","46-90","91-120","121-179","180","181-364"};
-	
+
+	protected float principleAmmount;
 	protected  String typeOfFDInvestment;
 	
+	public float getPrincipleAmmount() {
+		return principleAmmount;
+	}
+
+	public void setPrincipleAmmount(float principleAmmount) {
+		this.principleAmmount = principleAmmount;
+	}
+
 	public String getTypeOfFDInvestment() {
 		return typeOfFDInvestment;
 	}
@@ -25,6 +34,7 @@ public class FixedDeposit extends TermDeposit{
 		if(Ch.equalsIgnoreCase("y")) {
 			showEarnigs();
 		}
+		
 		System.out.print("\t Apply Now [Y/n] ");
 		Ch = Sc.next();
 		if(Ch.equalsIgnoreCase("Y")) {
@@ -62,8 +72,8 @@ public class FixedDeposit extends TermDeposit{
 		}
 	}
 	
-	public static void showIntrestRatesAndMAaturityPeroids(String maturityPeroids[],double intrestRates[]){	
-		System.out.println("\n\tThe Following Maturity Period And its Corresponding Rate of Intrest..");
+	public void showIntrestRatesAndMAaturityPeroids(String maturityPeroids[],double intrestRates[]){	
+		System.out.println("\n\tThe Following Time Period And its Corresponding Rate of Intrest..");
 		System.out.println("\n\tPeroid"+"\t\t\t"+"Intrest");
 		System.out.println("\t......"+"\t\t\t|\t"+".......");
 		for(int i=0 ; i<FixedDeposit.maturityPeroidImDays.length ; i++) {
@@ -75,7 +85,8 @@ public class FixedDeposit extends TermDeposit{
 	public void setIntrestRateAndMaturity() {				// function to set the Investment Peroid And Its Corresponding Intrest Rate
 		Scanner Sc = new Scanner(System.in);
 		String Ch;
-		System.out.print("\t Want to Check the Intrest Rates For the Fixed Deposits Yes/Continue[Y/c] :");
+		System.out.print("\t Want to Check the Intrest Rates By Identfying the "
+				+ "\n\t   Time Peroid Yes/Continue[Y/c] :");
 		Ch = Sc.next();
 		
 		if(Ch.equalsIgnoreCase("Y")) {
