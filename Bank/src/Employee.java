@@ -1,3 +1,6 @@
+import java.util.Scanner;
+
+import BasicUtilities.Address;
 
 public class Employee {
 	protected String companyName;
@@ -21,8 +24,19 @@ public class Employee {
 	public void setNoOfEmployees(int noOfEmployees) {
 		this.noOfEmployees = noOfEmployees;
 	}
-	
-	
-	
 
+	public static Employee acceptEmployeeInfo() {
+		Scanner Sc = new Scanner(System.in);
+		Employee emp = new Employee();
+		System.out.println("\tCompany Name : ");
+		emp.setCompanyName(Sc.nextLine());
+		System.out.println("\tCompany Address : ");
+		emp.setCompanyAddress(Sc.nextLine());
+		System.out.println("\tNo of Employees : ");
+		emp.setNoOfEmployees(Sc.nextInt());
+		return emp;
+	}
+	
+		
+	
 }
