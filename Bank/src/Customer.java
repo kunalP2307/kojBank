@@ -12,6 +12,7 @@ public class Customer {
 	protected String Gender;
 	protected IdProof personalID;
 	protected Account account;
+	protected Card cards[];
 	protected Beneficiary beneficiary;
 	
 	

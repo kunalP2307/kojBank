@@ -27,7 +27,7 @@ public class CurrentAccount extends Account{
 		for(int i=0; i<CurrentAccount.professionTypes.length; i++)
 			System.out.println("\t\t"+(i+1)+"- "+CurrentAccount.professionTypes[i]);
 		
-		System.out.println("/tSelect suitable profession type for u : ");
+		System.out.print("\t Select suitable profession type for you : ");
 		choice = Sc.nextInt();
 		
 		switch(choice) {
