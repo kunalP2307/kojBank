@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import BasicUtilities.Address;
-
 public class Employee {
 	protected String companyName;
 	protected String companyAddress;
