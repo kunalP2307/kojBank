@@ -2,3 +2,9 @@
 /BasicUtilities/
 /Authentication.class
 /Branch$AccountAutentication.class
+/Loan.class
+/CarLoan.class
+/homeLoan.class
+/goldLoan.class
+/UPI.class
+/PassWord.class

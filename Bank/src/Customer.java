@@ -11,8 +11,12 @@ public class Customer {
 	protected byte age;
 	protected String Gender;
 	protected IdProof personalID;
+	//protected Account[] accounts;
 	protected Account account;
 	protected Card cards[];
+	protected Loan loans[];
+	protected TermDeposit investments[];
+	protected UPI upi[];
 	protected Beneficiary beneficiary;
 	protected int nofCardsOwned = 0;
 	public static int LastCustNo = 1201;
@@ -158,6 +162,9 @@ public class Customer {
 		reEnter: do{ 
 			System.out.print("\tReEnter : ");
 			if(Scan.nextInt() == temp) {
+				
+				
+				
 				C.setmPin(temp);
 				break enTer;
 			}
@@ -182,12 +189,4 @@ public class Customer {
 		return C;
 			
 	}	
-	/*public static void main(String Args[]) {
-		Customer c = new Customer();
-		Name n  = new Name();
-		c.applyCard();
-		c.applyCard();
-		System.out.println(c.cards[1].getCardNo());
-		
-	}*/ 
 }

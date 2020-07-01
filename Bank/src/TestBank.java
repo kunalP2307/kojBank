@@ -6,7 +6,6 @@ public class TestBank {
 		Scanner Sc = new Scanner(System.in);	
 		Branch B = new Branch();
 		boolean logedIn = false;
-		AfterLogIn();
 		Branch.AccountAutentication Authenticate = B.new AccountAutentication();
 		System.out.println("\t K.O.J Introduces Online Platform to Manage All yout Banking Needs.."
 				+ "\n 					From Anywhere At Anytime.. :)   ");
