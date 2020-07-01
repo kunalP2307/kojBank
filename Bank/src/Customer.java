@@ -14,6 +14,8 @@ public class Customer {
 	protected Account account;
 	protected Card cards[];
 	protected Beneficiary beneficiary;
+	protected int nofCardsOwned = 0;
+	
 	
 	
 	// Getters And Setters
@@ -91,6 +93,28 @@ public class Customer {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+	public Card[] getCards() {
+		return cards;
+	}
+	public void setCards(Card[] cards) {
+		this.cards = cards;
+	}
+	public void setCard(Card card,int pos) {
+		if(pos == 0) {
+			System.out.println("memory initialized");
+			this.cards = new Card[2];
+		}
+		cards[pos] = card;
+	}
+	
+	public void applyCard() {
+		Name n = new Name();
+		Card C1 = new Card();
+		C1 = Card.generateCard(123, 132, n);
+		setCard(C1, nofCardsOwned);
+		nofCardsOwned ++;
+		System.out.println(C1.getCardNo());
+	}
 	
 	
 	public static Customer setCustDetails(Customer C) {
@@ -129,4 +153,12 @@ public class Customer {
 		line.drawTabLine();
 		return C;
 	}	
+	/*public static void main(String Args[]) {
+		Customer c = new Customer();
+		Name n  = new Name();
+		c.applyCard();
+		c.applyCard();
+		System.out.println(c.cards[1].getCardNo());
+		
+	}*/ 
 }

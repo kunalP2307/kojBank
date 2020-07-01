@@ -9,6 +9,7 @@ public abstract class Account {
 	protected String branchName;
 	protected Branch branch;
 	protected String dateofAccountOpening;
+	protected PassBook passBook;
 	
 	// Getters And Setters
 	
@@ -57,96 +58,18 @@ public abstract class Account {
 	
 	public abstract void manageFDnRD();*/
 	
-	
-	public static Account setAccountType() {
-		boolean validChoice = false;
-		String Ch;
-		Scanner Scan = new Scanner(System.in);
-		byte choice=0,choice2=0;
-		while(validChoice == false){
-			System.out.println("\tAccount Types :");
-			for(int i=0; i<Branch.accountTypes.length; i++)
-				System.out.println("\t\t"+(i+1)+"- "+Branch.accountTypes[i][0]);
-			
-			System.out.print("\tSelect Situable Type For You :");
-			choice = Scan.nextByte();
-		
-			if(choice >= 6) {
-				System.out.println("Kindly Select From the Given Options...");
-			}
-			else {
-				validChoice = true;
-				System.out.println("\t~"+Branch.accountTypes[choice-1][0]+" Accountss");
-				for(int i=0; i<Branch.accountTypes[choice-1].length-1;i++) {
-					System.out.println("\t\t"+(i+1)+"- "+Branch.accountTypes[choice-1][i+1]);
-				}
-			}
+	public void setBranch() {
+		branch = new PuneBranch();
+		if(branch instanceof PuneBranch) {
+			System.out.println(PuneBranch.Telephone);
 		}
-		validChoice = false;
-		while(validChoice == false){
-			System.out.print("\tSelect the type of "+Branch.accountTypes[choice-1][0]+" : ");
-			choice2 = Scan.nextByte();
-			if(choice2 >= Branch.accountTypes[choice-1].length) {
-				System.out.println("Kindly Select the Valid Option..");
-				validChoice = false;
-			}
-			else {
-				validChoice = true;
-			}
-		}
-		switch(choice) {
-			case 1:
-				switch(choice2) {
-					case 1:
-						BSBD B = new BSBD();
-						return  (BSBD)B;
-					
-					case 2:
-						BSBDSS Bs = new BSBDSS();
-						return  (BSBDSS)Bs;
-				}
-				
-			case 2:
-				CurrentAccount Cr = new CurrentAccount();
-				return (CurrentAccount)Cr;
-			
-			case 3:
-				switch(choice2) {
-					case 1:
-						RecuringDepostit  RD = new RecuringDepostit();
-						return (RecuringDepostit)RD;
-				
-					case 2:
-						FixedDeposit FD = new FixedDeposit();
-						return (FixedDeposit)FD;
-				}
-			
-			case 4:
-				ShareAccount S = new ShareAccount();
-				return (ShareAccount)S;
-			
-			case 5:
-				switch(choice2) {
-					case 1:
-						NRI Ni = new NRI();
-						return  (NRI)Ni;
-						
-					case 2:
-						NRE Ne = new NRE();
-						return  (NRE)Ne;
-						
-					case 3:
-						FCNR Fc = new FCNR();
-						return  (FCNR)Fc;
-				
-				}
-		}
-		return null;
 	}
 	
 	public static Customer setAccountDetails(Customer C) {
 		System.out.println("\n\t ~Account Details  ");
-		C.setAccount(Account.setAccountType());
+		
+		
+		C.setAccount(Branch.setAccountType());
 		C.account.createAccount();
 		return C;
 	}

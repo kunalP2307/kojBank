@@ -23,6 +23,7 @@ public class Card {
 	protected Name nameOnCard;
 	protected Date validTill;
 	protected int CVV;
+	protected int pin;
 	
 	
 	public long getRegMobiileNo() {
@@ -73,7 +74,23 @@ public class Card {
 		CVV = cVV;
 	}
 
-	public Card generateCard(long regMobiileNo,int accNo,Name nameOnCard ) {
+	public static void setLastCardNo(long lastCardNo) {
+		LastCardNo = lastCardNo;
+	}
+
+	public static void setNoOfCardsDistribuited(int noOfCardsDistribuited) {
+		Card.noOfCardsDistribuited = noOfCardsDistribuited;
+	}
+
+	public static void setCardsDistribuited(Card[] cardsDistribuited) {
+		Card.cardsDistribuited = cardsDistribuited;
+	}
+
+	public void setPin(int pin) {
+		this.pin = pin;
+	}
+
+	public static Card generateCard(long regMobiileNo,int accNo,Name nameOnCard ) {
 		Card C = new Card();
 		Random R = new Random();
 		C.setRegMobiileNo(regMobiileNo); 
@@ -81,6 +98,10 @@ public class Card {
 		C.setNameOnCard(nameOnCard);
 		C.setCardNo(LastCardNo);
 		C.setCVV(R.nextInt(999));
+		int temp = R.nextInt(9999);
+		C.setPin(~temp);
+		System.out.println(C.pin);
+		System.out.println(~C.pin);
 		System.out.println(C.CVV);
 		// add valid till
 		cardsDistribuited[noOfCardsDistribuited] = C;
@@ -91,7 +112,8 @@ public class Card {
 	}
 	
 	
-	public boolean makeTransaction(float transactionAmmount) {
+
+	public static boolean makeTransaction(float transactionAmmount) {
 		 boolean validCard= validateCard();
 		 boolean transactionStatus = false;
 		 	if(validCard == true) {
@@ -182,6 +204,14 @@ public class Card {
 	
 	public boolean withDrawalMoney() {
 		return true;
+	}
+	
+	public static void main(String Args[]) {
+		Name n = new Name();
+		Card.generateCard(1234, 2345, n);
+		Card.makeTransaction(2345);
+		
+	//	Card.generateCard(23, 23, n);
 	}
 	
 }
