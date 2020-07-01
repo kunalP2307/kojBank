@@ -4,8 +4,8 @@ import BasicUtilities.Address;
 
 public class CurrentAccount extends Account{
 	public static float minBalanceToBeMaintained=5000;
-	public static float maxCashTransactionAmountPerDay;
-	public static float chargesOrCashTransactionPer_1000Rs;
+	public static float maxCashTransactionAmountPerDay=200000;
+	public static float chargesOrCashTransactionPer_1000Rs=1;
 	public static String profession;
 	public static String professionTypes[] = {"Employee","Buisnessman","Other"};
 	protected Employee employeeInfo;
@@ -53,5 +53,7 @@ public class CurrentAccount extends Account{
 					continue;
 				}
 		}while(true);
+		
+		
 	}
 }
