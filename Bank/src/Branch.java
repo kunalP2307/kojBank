@@ -4,7 +4,7 @@ import BasicUtilities.Address;
 public class Branch {
 	public static String accountTypes[][] = {
 			{"Savings","BSBD","BSBDSS"},
-			{"Current"},
+			{"Current","Current"},
 			{"Term Deposits","Recuring Deposit","Fixed Deposit"},
 			{"Share Accounts","Traiding","Demant"},
 			{"NRO","NRI","NRE","FCNR"}
@@ -120,20 +120,22 @@ public class Branch {
 					break;
 				}
 			}
-			if(customers[i].getmPin() == mpin) {
+			if(PassWord.decryptPassWord(customers[i].getmPin()) == mpin) {
 				validCreds = true;
 			}
 			return validCreds;
 		}
 		public boolean SignUp() {
-			return login();
+			boolean b =login();
+			//System.out.println(b);
+			return b;
 		}
 	}
 	
 	public static void openAccount() {
 		Customer C = new Customer();
 		C = Customer.setCustDetails(C);
-		//C = Account.setAccountDetails(C);
+		C = Account.setAccountDetails(C);
 		Branch.addCustomer(C);
 		System.out.println(C.getCustID());
 		System.out.println(C.getmPin());

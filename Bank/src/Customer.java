@@ -4,7 +4,7 @@ import BasicUtilities.*;
 public class Customer {
 	
 	protected int custID;
-	protected int mPin;
+	protected String mPin;
 	protected Name custName;
 	protected long mobileNo;
 	protected Address custAddress;
@@ -31,11 +31,11 @@ public class Customer {
 		LastCustNo ++;
 	}
 	
-	public int getmPin() {
+	public String getmPin() {
 		return mPin;
 	}
 	public void setmPin(int mPin) {
-		this.mPin = mPin;
+		this.mPin = PassWord.encryptPassWord(mPin);
 	}
 	
 	public String getCustName() {
@@ -162,9 +162,6 @@ public class Customer {
 		reEnter: do{ 
 			System.out.print("\tReEnter : ");
 			if(Scan.nextInt() == temp) {
-				
-				
-				
 				C.setmPin(temp);
 				break enTer;
 			}

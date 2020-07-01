@@ -20,13 +20,12 @@ public class RecuringDepostit extends TermDeposit{
 	public void setMonthlyDepositAmmount(float monthlyDepositAmmount) {
 		this.monthlyDepositAmmount = monthlyDepositAmmount;
 	}
-	public void temp() {
+	public void createMonthlyDepositCard() {
 		monthlyDepositRecord[0] = true;
 		System.out.println(monthlyDepositRecord[0]);
 	}
 
 	public void createAccount() {
-		temp();
 		Scanner Sc = new Scanner(System.in);
 		String Ch;
 		System.out.println("\n\n\t---------Recuring Deposti-------------\n");
@@ -61,11 +60,9 @@ public class RecuringDepostit extends TermDeposit{
 				
 			}while(true);
 			setIntrestRateAndMaturity();
-			
-			
+			createMonthlyDepositCard();
 		}
-		
-	
+		showMsg();
 	}
 	public void setIntrestRateAndMaturity() {				
 		Scanner Sc = new Scanner(System.in);

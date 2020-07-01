@@ -69,6 +69,7 @@ public class FixedDeposit extends TermDeposit{
 						continue;
 				}			
 			}while(i==1);
+			showMsg();
 		}
 	}
 	
@@ -147,7 +148,7 @@ public class FixedDeposit extends TermDeposit{
 	}
 	
 	public void calculateIntrest(int Peroid, double intrestRate,  float Principal) {
-		
+		System.out.println("INside Calculate Intrest");
 		
 	}
 	public void showEarnigs() {

@@ -25,20 +25,8 @@ public class BSBD  extends SavingsAccount{
 					continue;
 				}
 		}while(true);
-		System.out.println("Do you want to perform any transaction then press 1");
-		int s=Sc.nextInt();
-		int cnt=0;
-		if(s==1) {
-			// Here call Transaction method
-			cnt++;
-		}
-		if(cnt==4) {
-			System.out.println("Your monthly transaction limit completed");
-		}
-		if(accBalance<1500) {
-			System.out.println("80 rupees applies as charges for not maintaining minimum balance in account");
-			
-		}
+		System.out.println("\n\t Congrats...! Your Savings Account Has Been Created in Our Branch..! "
+				+ "\n\t Enjoy The Fantastic Features Provided AnyTime AnyWhere... :)  ");
 	}
 
 }

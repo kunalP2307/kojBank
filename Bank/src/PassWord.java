@@ -2,7 +2,8 @@
 public class PassWord {
 	
 	public static String encryptPassWord(int pass) {
-		String binPass = Integer.toBinaryString(pass+2);
+		
+		String binPass = Integer.toBinaryString(pass+23);
 		String binEncPass = bitwiseNot(binPass);
 		return binEncPass;
 	}
@@ -10,7 +11,7 @@ public class PassWord {
 	public static int decryptPassWord(String pass) {
 		String binPass = charwiseNot(pass);
 		int decryptedPass= Integer.parseInt(binPass,2);
-		System.out.println(decryptedPass-2);
+		decryptedPass -= 23;
 		return decryptedPass;
 	}
 	
@@ -44,11 +45,5 @@ public class PassWord {
 		//System.out.println(comple);
 		return comple;
 	}
-	public static void main(String Args[]) {
-		String str  = encryptPassWord(23657);
-		decryptPassWord(str);
-		
-		//System.out.println(encryptPassWord(n));
-	}
-	
+
 }

@@ -28,6 +28,7 @@ public class TestBank {
 				logedIn = Authenticate.SignUp();
 				System.out.println("\t ~ Sign Up [press any key to sign up] ");
 				String temp = Sc.next();
+				//System.out.println(logedIn);
 				break;
 			}
 			else {
@@ -57,5 +58,14 @@ public class TestBank {
 		System.out.println(" f - Fixed Deposti    r ~ Recuring Deposit");
 		System.out.println("\n Apply Now : ");
 		System.out.println(" Ac ~ Cards   Al ~ Loan ");
+		
+		
+		Scanner Sc = new Scanner(System.in);
+		System.out.print("\t Select Operation : ");
+		String Ch = Sc.next();
+		
+		System.out.println("Sorry Currently We are Working on THis Feilds.."
+				+ "\n\t  Come Back And explore Our Feed");
+		
 	}
 }

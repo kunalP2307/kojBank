@@ -10,8 +10,6 @@ public class CurrentAccount extends Account{
 	public static String professionTypes[] = {"Employee","Buisnessman","Other"};
 	protected Employee employeeInfo;
 	int choice;
-	Employee employee=new Employee();
-	CurrentAccount ca= new CurrentAccount();
 	
 	public Employee getEmployeeInfo() {
 		return employeeInfo;
@@ -22,6 +20,8 @@ public class CurrentAccount extends Account{
 
 	public void createAccount() {
 		Scanner Sc = new Scanner(System.in);
+		Employee employee=new Employee();
+		CurrentAccount ca= new CurrentAccount();
 		
 		System.out.println("\tProfession Types : ");
 		for(int i=0; i<CurrentAccount.professionTypes.length; i++)
@@ -53,7 +53,7 @@ public class CurrentAccount extends Account{
 					continue;
 				}
 		}while(true);
-		
-		
+		System.out.println("\n\t Congrats....! Your Account Has Benn Open In Our Bank..."
+				+ "\n\t   Now Enjoy Unlimited Online Transactions Withou Any Charges... :) ");
 	}
 }

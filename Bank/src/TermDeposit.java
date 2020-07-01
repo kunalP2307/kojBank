@@ -37,6 +37,8 @@ public abstract class TermDeposit extends Account {
 	public void setIntrestAmmount(float intrestAmmount) {
 		this.intrestAmmount = intrestAmmount;
 	}
-	
+	public void showMsg() {
+		System.out.println("\t Congrats...!Your Term Deposit Account Has Been Created..");
+	}
 	
 }
