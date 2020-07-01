@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class PuneBranch implements Branch{
+public class PuneBranch extends Branch{
 	
 	
 	static String branchName = "PUNE  SSI (1140)";

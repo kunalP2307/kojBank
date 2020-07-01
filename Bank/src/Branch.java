@@ -107,6 +107,7 @@ public class Branch {
 	}
 	public class AccountAutentication{
 		public boolean login() {
+			//System.out.println("\t-----Login--------");
 			Scanner Sc = new Scanner(System.in);
 			boolean validCreds = false;
 			int i =0 ;
@@ -124,7 +125,9 @@ public class Branch {
 			}
 			return validCreds;
 		}
-		
+		public boolean SignUp() {
+			return login();
+		}
 	}
 	
 	public static void openAccount() {

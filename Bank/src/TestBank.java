@@ -1,9 +1,12 @@
 import java.util.Scanner;
 
+
 public class TestBank {
 	public static void main(String Args[]) {
 		Scanner Sc = new Scanner(System.in);	
 		Branch B = new Branch();
+		boolean logedIn = false;
+		AfterLogIn();
 		Branch.AccountAutentication Authenticate = B.new AccountAutentication();
 		System.out.println("\t K.O.J Introduces Online Platform to Manage All yout Banking Needs.."
 				+ "\n 					From Anywhere At Anytime.. :)   ");
@@ -14,11 +17,18 @@ public class TestBank {
 			System.out.print("\n\tSelect One : ");
 			String Ch = Sc.next();
 			if(Ch.equalsIgnoreCase("l")) {
-				boolean bs = Authenticate.login();
+				System.out.println("\t---- Login ----");
+				logedIn = Authenticate.login();		
+				System.out.println("\t ~ Sign Up [press any key to Login] ");
+				String Temp = Sc.next();
 				break;
 			}
 			else if(Ch.equalsIgnoreCase("c")) {
 				Branch.openAccount();
+				System.out.println("\t---- Sign Up ---");
+				logedIn = Authenticate.SignUp();
+				System.out.println("\t ~ Sign Up [press any key to sign up] ");
+				String temp = Sc.next();
 				break;
 			}
 			else {
@@ -29,5 +39,24 @@ public class TestBank {
 			}
 		}while(true);
 		
+		if(logedIn == true) {
+			AfterLogIn();
+		}
+	}
+	
+	
+	
+	public static void AfterLogIn() {
+		System.out.println("------------------------------------------------------------------------------");
+		System.out.println("K.O.J Bank\n\n");
+		System.out.println("\n p ~ Profile 		f ~ forgot Pin 		h ~ Need Help  	 l ~ logout");
+		System.out.println("\n Manage Account : ");
+		System.out.println(" i ~ FD_RD Accounts  c ~ Cards 	 L ~ Loans  ");
+		System.out.println("\n Money Tranfer : ");
+		System.out.println(" a ~ Account Transfer   c ~ to Contact   ");
+		System.out.println("\n Invest Money : ");
+		System.out.println(" f - Fixed Deposti    r ~ Recuring Deposit");
+		System.out.println("\n Apply Now : ");
+		System.out.println(" Ac ~ Cards   Al ~ Loan ");
 	}
 }
