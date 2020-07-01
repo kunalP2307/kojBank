@@ -5,7 +5,6 @@ public class TestBank {
 		Scanner Sc = new Scanner(System.in);	
 		Branch B = new Branch();
 		Branch.AccountAutentication Authenticate = B.new AccountAutentication();
-		Branch.openAccount();
 		System.out.println("\t K.O.J Introduces Online Platform to Manage All yout Banking Needs.."
 				+ "\n 					From Anywhere At Anytime.. :)   ");
 		do {
@@ -15,12 +14,7 @@ public class TestBank {
 			System.out.print("\n\tSelect One : ");
 			String Ch = Sc.next();
 			if(Ch.equalsIgnoreCase("l")) {
-				System.out.print("\n\n\t\t     CRN No : ");
-				int Crn = Sc.nextInt();
-				System.out.print("\t\t Mobile Pin : ");
-				int mpin = Sc.nextShort();
-				boolean bs = Authenticate.login(Crn, mpin);
-				System.out.println(bs);
+				boolean bs = Authenticate.login();
 				break;
 			}
 			else if(Ch.equalsIgnoreCase("c")) {

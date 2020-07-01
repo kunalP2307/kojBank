@@ -151,10 +151,36 @@ public class Customer {
 		if(Choice.equalsIgnoreCase("Y")) {
 			C.setBeneficiary(Beneficiary.acceptBeneficiary());
 		}
-		System.out.print("\t Mobile Pin : ");
-		C.setmPin(Scan.nextShort());
+		System.out.println("\tOne Final Step...! ");
+		enTer: do {
+			System.out.print("\tSet Your Mobile Pin : ");
+		int temp = Scan.nextInt();
+		reEnter: do{ 
+			System.out.print("\tReEnter : ");
+			if(Scan.nextInt() == temp) {
+				C.setmPin(temp);
+				break enTer;
+			}
+			else {
+				System.out.println("\t ReEntered Pin Dosen't matches with the prevously Entered Pin  :");
+				System.out.println("\t ReEnter Pin (R)");
+				System.out.println("\t Set new MPin (N)");
+				System.out.print("\n\t Select One : ");
+				String Ch = Scan.next();
+				if(Ch.equalsIgnoreCase("R")) {
+					continue reEnter;
+				}
+				else if(Ch.equalsIgnoreCase("N")) {
+					continue enTer;
+				}
+			}
+		}while(true);
+		}while(true);
+				
+			
 		line.drawTabLine();
 		return C;
+			
 	}	
 	/*public static void main(String Args[]) {
 		Customer c = new Customer();

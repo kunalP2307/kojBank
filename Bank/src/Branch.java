@@ -106,16 +106,20 @@ public class Branch {
 		return null;
 	}
 	public class AccountAutentication{
-		public boolean login(int Crn , int mPIn) {
+		public boolean login() {
+			Scanner Sc = new Scanner(System.in);
 			boolean validCreds = false;
-			int j = 0;
-			for(int i=0; i<noOfCusts; i++) {
+			int i =0 ;
+			System.out.print("\n\n\t\t     CRN No : ");
+			int Crn = Sc.nextInt();
+			System.out.print("\t\t Mobile Pin : ");
+			int mpin = Sc.nextShort();
+			for(i=0; i<noOfCusts; i++) {
 				if(customers[i].getCustID() == Crn) {
-					j = i;
 					break;
 				}
 			}
-			if(customers[j].getmPin() == mPIn) {
+			if(customers[i].getmPin() == mpin) {
 				validCreds = true;
 			}
 			return validCreds;
