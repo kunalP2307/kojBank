@@ -1,16 +1,24 @@
 import java.util.Scanner;
-
 import BasicUtilities.Address;
 
-interface Branch {
-	static String accountTypes[][] = {
+public class Branch {
+	public static String accountTypes[][] = {
 			{"Savings","BSBD","BSBDSS"},
 			{"Current"},
 			{"Term Deposits","Recuring Deposit","Fixed Deposit"},
 			{"Share Accounts","Traiding","Demant"},
 			{"NRO","NRI","NRE","FCNR"}
 	};	
+	protected static Customer[] customers;
+	public static int noOfCusts = 0;
 	
+	static {
+		customers = new Customer[5];
+	}
+	
+	public static void addCustomer(Customer C) {
+		customers[noOfCusts] = C;
+	}
 	
 	public static Account setAccountType() {
 		boolean validChoice = false;
@@ -19,7 +27,7 @@ interface Branch {
 		byte choice=0,choice2=0;
 		while(validChoice == false){
 			System.out.println("\tAccount Types :");
-			for(int i=0; i<PuneBranch.accountTypes.length; i++)
+			for(int i=0; i<Branch.accountTypes.length; i++)
 				System.out.println("\t\t"+(i+1)+"- "+Branch.accountTypes[i][0]);
 			
 			System.out.print("\tSelect Situable Type For You :");
@@ -30,8 +38,8 @@ interface Branch {
 			}
 			else {
 				validChoice = true;
-				System.out.println("\t~"+PuneBranch.accountTypes[choice-1][0]+" Accountss");
-				for(int i=0; i<PuneBranch.accountTypes[choice-1].length-1;i++) {
+				System.out.println("\t~"+Branch.accountTypes[choice-1][0]+" Accountss");
+				for(int i=0; i<Branch.accountTypes[choice-1].length-1;i++) {
 					System.out.println("\t\t"+(i+1)+"- "+Branch.accountTypes[choice-1][i+1]);
 				}
 			}
@@ -40,7 +48,7 @@ interface Branch {
 		while(validChoice == false){
 			System.out.print("\tSelect the type of "+Branch.accountTypes[choice-1][0]+" : ");
 			choice2 = Scan.nextByte();
-			if(choice2 >= PuneBranch.accountTypes[choice-1].length) {
+			if(choice2 >= Branch.accountTypes[choice-1].length) {
 				System.out.println("Kindly Select the Valid Option..");
 				validChoice = false;
 			}
@@ -97,11 +105,31 @@ interface Branch {
 		}
 		return null;
 	}
+	public class AccountAutentication{
+		public boolean login(int Crn , int mPIn) {
+			boolean validCreds = false;
+			int j = 0;
+			for(int i=0; i<noOfCusts; i++) {
+				if(customers[i].getCustID() == Crn) {
+					j = i;
+					break;
+				}
+			}
+			if(customers[j].getmPin() == mPIn) {
+				validCreds = true;
+			}
+			return validCreds;
+		}
+		
+	}
 	
-	
-	public static void openAccount(Customer C) {
+	public static void openAccount() {
+		Customer C = new Customer();
 		C = Customer.setCustDetails(C);
-		C = Account.setAccountDetails(C);
+		//C = Account.setAccountDetails(C);
+		Branch.addCustomer(C);
+		System.out.println(C.getCustID());
+		System.out.println(C.getmPin());
 	}
 	
 }

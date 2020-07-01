@@ -4,7 +4,7 @@ import BasicUtilities.*;
 public class Customer {
 	
 	protected int custID;
-	protected short mPin;
+	protected int mPin;
 	protected Name custName;
 	protected long mobileNo;
 	protected Address custAddress;
@@ -15,21 +15,22 @@ public class Customer {
 	protected Card cards[];
 	protected Beneficiary beneficiary;
 	protected int nofCardsOwned = 0;
-	
+	public static int LastCustNo = 1201;
 	
 	
 	// Getters And Setters
 	public int getCustID() {
 		return custID;
 	}
-	public void setCustID(int custID) {
-		this.custID = custID;
+	public void setCustID() {
+		this.custID = LastCustNo;
+		LastCustNo ++;
 	}
 	
-	public short getmPin() {
+	public int getmPin() {
 		return mPin;
 	}
-	public void setmPin(short mPin) {
+	public void setmPin(int mPin) {
 		this.mPin = mPin;
 	}
 	
@@ -125,7 +126,7 @@ public class Customer {
 		DrawLine line = new DrawLine();
 		FormUtilities form = new FormUtilities();
 		
-		
+		C.setCustID();
 		System.out.println("\t\tKindly Fill All the Mendetoery Fields :");
 		System.out.println("\n\t ~Personal Details..");
 		line.drawTabLine();
@@ -150,6 +151,8 @@ public class Customer {
 		if(Choice.equalsIgnoreCase("Y")) {
 			C.setBeneficiary(Beneficiary.acceptBeneficiary());
 		}
+		System.out.print("\t Mobile Pin : ");
+		C.setmPin(Scan.nextShort());
 		line.drawTabLine();
 		return C;
 	}	

@@ -13,6 +13,7 @@ public abstract class Account {
 	
 	// Getters And Setters
 	
+	
 	public int getAccNo() {
 		return accNo;
 	}
@@ -58,12 +59,12 @@ public abstract class Account {
 	
 	public abstract void manageFDnRD();*/
 	
-	public void setBranch() {
+	/*public void setBranch() {
 		branch = new PuneBranch();
 		if(branch instanceof PuneBranch) {
 			System.out.println(PuneBranch.Telephone);
 		}
-	}
+	}*/
 	
 	public static Customer setAccountDetails(Customer C) {
 		System.out.println("\n\t ~Account Details  ");
