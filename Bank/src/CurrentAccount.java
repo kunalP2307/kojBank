@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import BasicUtilities.Address;
+import BasicUtilities.DrawLine;
 import BasicUtilities.Name;
 
 
@@ -25,7 +26,7 @@ public class CurrentAccount extends Account{
 		Employee employee=new Employee();
 		CurrentAccount ca= new CurrentAccount();
 		
-		System.out.println("\tProfession Types : ");
+		System.out.println("\n\n\tProfession Types : ");
 		for(int i=0; i<CurrentAccount.professionTypes.length; i++)
 			System.out.println("\t\t"+(i+1)+"- "+CurrentAccount.professionTypes[i]);
 		
@@ -35,16 +36,24 @@ public class CurrentAccount extends Account{
 		switch(choice) {
 		case 1:
 			profession = CurrentAccount.professionTypes[1];	
-			ca.setEmployeeInfo(employee.acceptEmployeeInfo());	
+			ca.setEmployeeInfo(employee.acceptEmployeeInfo());
+			break;
 		case 2:
-			profession = CurrentAccount.professionTypes[2];	
+			profession = CurrentAccount.professionTypes[2];
+			break;
 		case 3:
 			System.out.println("\tProfession : ");
 			profession=Sc.nextLine();
+			break;
+		default:
+			System.out.println("\tInvalid choice");
 		}
-			
+		
+		DrawLine line = new DrawLine();
+		line.drawTabLine();
+		
 		do{
-			System.out.print("\tAmmount to Initiate Your Account..");
+			System.out.print("\n\tAmmount to Initiate Your Account..");
 			float Balance  = Sc.nextFloat();
 				if(Balance >= 5000) {
 					setAccBalance(Balance);
@@ -58,7 +67,7 @@ public class CurrentAccount extends Account{
 		
 	}
 	public void showMsg(boolean accStatus,Name custName) {
-		System.out.println("\n\t Congrats....! Your Account Has Benn Open In Our Bank..."
-				+ "\n\t   Now Enjoy Unlimited Online Transactions Withou Any Charges... :) ");
+		System.out.println("\n\t Congrats....! Your Account Has Been Open In Our Bank..."
+				+ "\n\t   Now Enjoy Unlimited Online Transactions Without Any Charges... :) ");
 	}
 }
