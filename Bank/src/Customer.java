@@ -106,6 +106,9 @@ public class Customer {
 		this.cards = cards;
 	}
 	public void changeMpin() {
+		System.out.println("\t----Chamge Pim------");
+		System.out.println("\n\t Enter Your Last Pin : ");
+		
 		
 	}
 	public void setCard(Card card,int pos) {
@@ -177,9 +180,27 @@ public class Customer {
 			
 		line.drawTabLine();
 	}	
+	public void editProfile() {
+		/*
+		 * 
+		 * 
+		 * 
+		 */
+	}
 	
-	public void showProfile() {
-		System.out.println("Name :"+getCustName());
+	public void showProfile() throws Exception{
+		Scanner Sc = new Scanner(System.in);
+		System.out.println("\t---------Profile---------\n");
+	//	System.out.println("\t KYC status:");
+		System.out.println("\t\t   "+getCustName());
+		System.out.println("\t 		 CRN : "+(MaskString.maskString(Integer.toString(getCustID()), 0, 2, '*')));
+		System.out.println("\t Mobile No : "+MaskString.maskString(Long.toString(getMobileNo()), 0, 6, '*'));
+		System.out.println("\t   Address : "+getCustAddress());
+		System.out.print("\n\t Edit Profile : E");
+		String E = Sc.next();
+		if(E.equalsIgnoreCase("e")) {
+			editProfile();
+		}
 	}
 	
 }

@@ -51,13 +51,13 @@ public class TestBank {
 		}
 		
 	}
-	public static void AfterLogIn(Customer currentlyLogedIn) {
+	public static void AfterLogIn(Customer currentlyLogedIn) throws Exception {
 		
 		System.out.println("------------------------------------------------------------------------------");
 		System.out.println("K.O.J Bank\n\n");
 		System.out.println("\n p ~ Profile 	f ~ Change MPIn  h ~ Need Help  l ~ logout");
 		System.out.println("\n Manage Account : \n");
-		System.out.println(" i ~ FD_RD Accounts  C ~ Cards 	 L ~ Loans  ");
+		System.out.println(" i ~ FD_RD Accounts  C ~ Cards 	 L ~ Loans  V - View Balance ");
 		System.out.println("\n Money Tranfer : \n");
 		System.out.println(" a ~ Account Transfer   c ~ to Contact  u ~ UPI ");
 		System.out.println("\n Invest Money : \n");
@@ -95,8 +95,11 @@ public class TestBank {
 				currentlyLogedIn.loans[0].manageLoans();
 			break;
 			
+			case 'V':
+				currentlyLogedIn.account.showBalance();
+			break;
 			case 'a':
-				currentlyLogedIn.account.accountTransfer(0,0);		
+				currentlyLogedIn.account.accountTransfer();		
 							// ammount and accountNo
 			break;
 			

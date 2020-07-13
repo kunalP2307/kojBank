@@ -10,9 +10,12 @@ public abstract class Account {
 	protected Branch branch;
 	protected String dateofAccountOpening;
 	protected PassBook passBook;
-	
+	protected static int lastAccountNo = 1200;
 	// Getters And Setters
-	
+	public static void temp() {
+		System.out.println(lastAccountNo);
+		lastAccountNo++;
+	}
 	
 	public int getAccNo() {
 		return accNo;
@@ -66,8 +69,17 @@ public abstract class Account {
 			System.out.println(PuneBranch.Telephone);
 		}
 	}*/
-	
-	public boolean accountTransfer(float ammount,int accountNo) {
+	public void showBalance() {
+		System.out.println("\n\t Your Account Balance is Rs. "+getAccBalance()+" /-");
+	}
+	public boolean accountTransfer() {
+		Scanner Sc = new Scanner(System.in);
+		System.out.print("\t Account No : ");
+		int accountNo = Sc.nextInt();
+		/*
+		 * ifsc 
+		 * branch
+		 */
 		return false;
 	}
 	

@@ -12,6 +12,8 @@ public class BSBDSS extends SavingsAccount {
 	}
 	public void showMsg(boolean accStatus , Name custName) {
 		System.out.println("\n\t Congrats...! Your Savings Account Has Been Created in Our Branch..! "
-				+ "\n\t Enjoy The Fantastic Features Provided, AnyTime AnyWhere... :)  ");
+				+ "\n\t Enjoy The Fantastic Features Provided, AnyTime AnyWhere... :)  "
+				+ "\n\t Your Transaction Limit is Just a Lac for year "
+				+ "\n\t You Can Increase the limit By just Paying Rs.1500 And Converting Account to BSBD");
 	}
 }

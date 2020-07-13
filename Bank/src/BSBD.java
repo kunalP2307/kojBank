@@ -24,8 +24,7 @@ public class BSBD  extends SavingsAccount{
 		System.out.println("\n\n\t Hey..! "+custName);
 		if(accStatus == true) {
 			System.out.println("\n\t Congrats...! Your Savings Account Has Been Created in Our Branch..! "
-				+ "\n\t Enjoy The Fantastic Features Provided AnyTime AnyWhere... :)  "
-				+ "\n\t Your Transaction Limit is Just 1 Lac per year You Can Upgrade to BSBD By Paying Rs 1500 Only.. ");
+				+ "\n\t Enjoy The Fantastic Features Provided AnyTime AnyWhere... :");  
 		}
 		else {
 			System.out.println("\t We are unable to Open Your Account With the Provied Details.."
