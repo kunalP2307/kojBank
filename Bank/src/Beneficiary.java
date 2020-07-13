@@ -25,11 +25,11 @@ public class Beneficiary {
 		Scanner Sc = new Scanner(System.in);
 		Beneficiary B = new Beneficiary();
 		DrawLine line = new DrawLine();
-		System.out.println("\n\t Fill the Benificiary Details Given Below");
-		line.drawLine();
+		System.out.println("\n\t ~Benificiary Details ");
+		line.drawTabLine();
 		FormUtilities form = new FormUtilities();
 		Name name = new Name();
-		B.setBeneficiaryName(name.setName());
+		B.setBeneficiaryName(name.getName());
 		System.out.print("\tRelation With Account Holder : ");
 		B.setRelationWithAccountHolder(Sc.next());
 		return B;

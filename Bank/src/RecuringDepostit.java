@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import BasicUtilities.Name;
+
 public class RecuringDepostit extends TermDeposit{
 	
 	public static double intsrestRates[] = {4.75,5.15,5.25,4.90,4.90,4.90};
@@ -141,5 +143,10 @@ public class RecuringDepostit extends TermDeposit{
 		float Principal = Sc.nextFloat();
 		setIntrestRateAndMaturity();
 		calculateIntrest(getMaturityPeroid(), getIntrestRate(), Principal);
+	}
+	@Override
+	public void showMsg(boolean accStatus, Name custName) {
+		// TODO Auto-generated method stub
+		
 	}
 }

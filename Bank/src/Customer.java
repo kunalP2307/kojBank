@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import BasicUtilities.*;
 
@@ -15,7 +16,7 @@ public class Customer {
 	protected Account account;
 	protected Card cards[];
 	protected Loan loans[];
-	protected TermDeposit investments[];
+	protected Investment investments[];
 	protected UPI upi[];
 	protected Beneficiary beneficiary;
 	protected int nofCardsOwned = 0;
@@ -104,6 +105,9 @@ public class Customer {
 	public void setCards(Card[] cards) {
 		this.cards = cards;
 	}
+	public void changeMpin() {
+		
+	}
 	public void setCard(Card card,int pos) {
 		if(pos == 0) {
 			System.out.println("memory initialized");
@@ -112,17 +116,7 @@ public class Customer {
 		cards[pos] = card;
 	}
 	
-	public void applyCard() {
-		Name n = new Name();
-		Card C1 = new Card();
-		C1 = Card.generateCard(123, 132, n);
-		setCard(C1, nofCardsOwned);
-		nofCardsOwned ++;
-		System.out.println(C1.getCardNo());
-	}
-	
-	
-	public static Customer setCustDetails(Customer C) {
+	public static void setCustDetails(Customer C) {
 		Scanner Scan = new Scanner(System.in);
 		byte choice = 0; 
 		
@@ -134,18 +128,15 @@ public class Customer {
 		System.out.println("\t\tKindly Fill All the Mendetoery Fields :");
 		System.out.println("\n\t ~Personal Details..");
 		line.drawTabLine();
-		C.setCustName(Name.setName());
-		System.out.print("\tAge : ");
-		C.setAge(Scan.nextByte());
+		C.setCustName(Name.getName());
+	
+		C.setAge(Age.getAge());
 		
-		System.out.print("\tMobile No : ");
-		C.setMobileNo(Scan.nextLong());
+		C.setMobileNo(MobileNo.getMobileNo());
 		
 		C.setGender(form.selectGender());		
-		line.drawTabLine();
 		
 		C.setCustAddress(Address.acceptAddress());	
-		line.drawTabLine();
 		
 		C.setPersonalId(IdProof.acceptIdProof());		
 		line.drawTabLine();
@@ -155,9 +146,11 @@ public class Customer {
 		if(Choice.equalsIgnoreCase("Y")) {
 			C.setBeneficiary(Beneficiary.acceptBeneficiary());
 		}
-		System.out.println("\tOne Final Step...! ");
+		line.drawTabLine();
+		System.out.println("\n\tOne Final Step...! "
+				+ "\n\t\t\t Protect Your Account...");
 		enTer: do {
-			System.out.print("\tSet Your Mobile Pin : ");
+			System.out.print("\n\tSet Your Mobile Pin : ");
 		int temp = Scan.nextInt();
 		reEnter: do{ 
 			System.out.print("\tReEnter : ");
@@ -183,7 +176,10 @@ public class Customer {
 				
 			
 		line.drawTabLine();
-		return C;
-			
 	}	
+	
+	public void showProfile() {
+		System.out.println("Name :"+getCustName());
+	}
+	
 }

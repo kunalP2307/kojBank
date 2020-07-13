@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import BasicUtilities.Address;
+import BasicUtilities.Name;
+import BasicUtilities.ProgressBar;
 
 public class Branch {
 	public static String accountTypes[][] = {
@@ -26,15 +28,15 @@ public class Branch {
 		Scanner Scan = new Scanner(System.in);
 		byte choice=0,choice2=0;
 		while(validChoice == false){
-			System.out.println("\tAccount Types :");
+			System.out.println("\tAccount Types :\n");
 			for(int i=0; i<Branch.accountTypes.length; i++)
 				System.out.println("\t\t"+(i+1)+"- "+Branch.accountTypes[i][0]);
 			
-			System.out.print("\tSelect Situable Type For You :");
+			System.out.print("\n\tSelect Situable Type For You :");
 			choice = Scan.nextByte();
 		
 			if(choice >= 6) {
-				System.out.println("Kindly Select From the Given Options...");
+				System.out.println("\n\t Kindly Select From the Given Options...");
 			}
 			else {
 				validChoice = true;
@@ -47,7 +49,7 @@ public class Branch {
 		validChoice = false;
 		while(validChoice == false){
 			System.out.print("\tSelect the type of "+Branch.accountTypes[choice-1][0]+" : ");
-			choice2 = Scan.nextByte();
+			choice2 = Scan.nextByte(); 
 			if(choice2 >= Branch.accountTypes[choice-1].length) {
 				System.out.println("Kindly Select the Valid Option..");
 				validChoice = false;
@@ -106,15 +108,24 @@ public class Branch {
 		return null;
 	}
 	public class AccountAutentication{
+		Customer currentlyLoggedIn;
+		public void setCurrentlyLogedIn(Customer currentlyLoggedIn) {
+			this.currentlyLoggedIn = currentlyLoggedIn;
+		}
+		public Customer getCurrentlyLogedIn() {
+			return currentlyLoggedIn;
+		}
+		
 		public boolean login() {
-			//System.out.println("\t-----Login--------");
 			Scanner Sc = new Scanner(System.in);
 			boolean validCreds = false;
-			int i =0 ;
+			int i = 0;
+			System.out.println("\t-----Login--------");
 			System.out.print("\n\n\t\t     CRN No : ");
 			int Crn = Sc.nextInt();
 			System.out.print("\t\t Mobile Pin : ");
-			int mpin = Sc.nextShort();
+			int mpin = Sc.nextInt();
+		
 			for(i=0; i<noOfCusts; i++) {
 				if(customers[i].getCustID() == Crn) {
 					break;
@@ -122,23 +133,77 @@ public class Branch {
 			}
 			if(PassWord.decryptPassWord(customers[i].getmPin()) == mpin) {
 				validCreds = true;
+				setCurrentlyLogedIn(customers[i]);
 			}
+			System.out.print("\t ~ Login [press any key to Login] ");
+			String Temp = Sc.next(); 
+			setCurrentlyLogedIn(customers[i]);
 			return validCreds;
 		}
 		public boolean SignUp() {
-			boolean b =login();
+			Scanner Sc = new Scanner(System.in);
+			boolean loginStatus = false;
+			boolean accountCreated = Branch.openAccount();
+			if(accountCreated) {
+				System.out.println("\n\t-----Sign In--------");
+				loginStatus =login();
+				System.out.print("\t ~ Sign Up [press any key to sign up] ");
+				String temp = Sc.next();
+			}
 			//System.out.println(b);
-			return b;
+			return loginStatus;
 		}
 	}
 	
-	public static void openAccount() {
+	public static boolean openAccount() {
+		Scanner Sc = new Scanner(System.in);
+		boolean isValidAccountDetails =false;
 		Customer C = new Customer();
-		C = Customer.setCustDetails(C);
-		C = Account.setAccountDetails(C);
-		Branch.addCustomer(C);
-		System.out.println(C.getCustID());
-		System.out.println(C.getmPin());
+		Customer.setCustDetails(C);
+		Account.setAccountDetails(C);
+		System.out.println("\n\n\t Verify Account Details for Further Process [y/n]");
+		String Ch = Sc.next();
+		if(Ch.equalsIgnoreCase("y")) {
+			isValidAccountDetails = verifyAccountDetails(C);
+		}
+		else
+			return false;
+		if(isValidAccountDetails) {
+			Branch.addCustomer(C);
+		}
+		C.account.showMsg(isValidAccountDetails, C.custName);
+		return isValidAccountDetails;
+		
 	}
 	
+	public static boolean verifyAccountDetails(Customer C) {
+		System.out.println("\t Please Wait While we Verify Your Details..");
+		try {
+			ProgressBar.fillProgressBar();
+		}catch(Exception e) {}
+		if(C.account instanceof BSBD) {
+			if(C.account.accBalance < 1500) {
+				return false;
+			}
+		}
+		else if(C.account instanceof BSBDSS) {
+			if(C.age < 18) {
+				return false;
+			}
+		}
+		else if(C.account instanceof CurrentAccount) {
+			if(C.account.accBalance < 5000 || C.age < 18) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	public static void applyCard(Customer C) {
+		Card card = Card.generateCard(C.mobileNo, C.account, C.custName);
+		C.setCard(card, C.nofCardsOwned);
+			C.nofCardsOwned ++;
+	}
+		
 }

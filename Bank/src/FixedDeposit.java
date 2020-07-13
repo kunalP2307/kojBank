@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import BasicUtilities.Name;
+
 public class FixedDeposit extends TermDeposit{
 	public static double intsrestRates[] = {3.50,4.00,5.00,5.40,5.60,6.00,6.60,6.70};
 	public static String maturityPeroidImDays[] = {"7-14","15-30","31-45","46-90","91-120","121-179","180","181-364"};
@@ -157,5 +159,11 @@ public class FixedDeposit extends TermDeposit{
 		float Principal = Sc.nextFloat();
 		setIntrestRateAndMaturity();
 		calculateIntrest(getMaturityPeroid(), getIntrestRate(), Principal);
+	}
+
+	@Override
+	public void showMsg(boolean accStatus, Name custName) {
+		// TODO Auto-generated method stub
+		
 	}
 }

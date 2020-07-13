@@ -16,9 +16,8 @@ public class Card {
 		cardsDistribuited = new Card[30];
 	}
 	
-	
+	protected Account accountLinkedToCard;
 	protected long regMobiileNo;
-	protected int accNo;
 	protected long cardNo;
 	protected Name nameOnCard;
 	protected Date validTill;
@@ -32,14 +31,6 @@ public class Card {
 
 	public void setRegMobiileNo(long regMobiileNo) {
 		this.regMobiileNo = regMobiileNo;
-	}
-
-	public int getAccNo() {
-		return accNo;
-	}
-
-	public void setAccNo(int accNo) {
-		this.accNo = accNo;
 	}
 
 	public long getCardNo() {
@@ -90,11 +81,31 @@ public class Card {
 		this.pin = pin;
 	}
 
-	public static Card generateCard(long regMobiileNo,int accNo,Name nameOnCard ) {
+	public Account getAccountLinkedToCard() {
+		return accountLinkedToCard;
+	}
+
+	public void setAccountLinkedToCard(Account accountLinkedToCard) {
+		this.accountLinkedToCard = accountLinkedToCard;
+	}
+
+	public void applyForCard() {
+		/*
+		 * 
+		 * 
+		 */
+	}
+	
+	public static void manageCards() {
+		
+	}
+	
+	
+	public static Card generateCard(long regMobiileNo,Account accountLinkedToCard,Name nameOnCard ) {
 		Card C = new Card();
 		Random R = new Random();
 		C.setRegMobiileNo(regMobiileNo); 
-		C.setAccNo(accNo);
+		C.setAccountLinkedToCard(accountLinkedToCard);
 		C.setNameOnCard(nameOnCard);
 		C.setCardNo(LastCardNo);
 		C.setCVV(R.nextInt(999));
@@ -110,26 +121,61 @@ public class Card {
 		return C;
 		
 	}
-	
-	
-
 	public static boolean makeTransaction(float transactionAmmount) {
-		 boolean validCard= validateCard();
 		 boolean transactionStatus = false;
-		 	if(validCard == true) {
-				
-		 		
-		 		// check the available balance of the linked Account...
-		 		// pass accNo of the Card to the method to return the account Balance..
-		 		// show account debited by transactoionAmmount
-				System.out.println("Transaction Successfull..");
+		 Card is_validCard= validateCard();
+		 if(transactionAmmount < 0) {
+			 System.out.println("\n\t Ammount Can't Bw Negative..!");
+			 return false;
+		 }
+			
+		 	if(is_validCard != null) {
+		 		if(is_validCard.accountLinkedToCard.getAccBalance() < transactionAmmount) {
+		 			System.out.println("\n\t Sorry You Don't Have Enough Balamce To Make the Transaction...");
+		 			return false;
+		 		}
+		 		else {
+		 			is_validCard.accountLinkedToCard.setAccBalance(is_validCard.accountLinkedToCard.getAccBalance() - transactionAmmount);
+		 			// pass accNo of the Card to the method to return the account Balance..
+		 			// show account debited by transactoionAmmount
+		 			System.out.println("Transaction Successfull..");
+		 		}
 			}
-			else {
-				System.out.println("\t Opps..! Something Went Wrong...!"
+			else if(is_validCard == null) {
+				System.out.println("\n\t Opps..! Something Went Wrong...!"
 							+"\n\t   Could Not Initiate Your Transaction.."
 							+ "\n\t   The Entered Card Details Seems Invalid..");
 			}
 		return transactionStatus;
+	}
+	public static Card validateCard() {
+		Scanner Sc = new Scanner(System.in);
+		boolean is_validCard  = false;
+		System.out.println("\t -- Fill the Card Details --\n");
+		System.out.print("\t Card No : ");
+		long cardNo = Sc.nextLong();
+		System.out.println(cardNo);
+		System.out.print("\t		  mm yyyy");
+		System.out.print("\n\t Valid till : ");
+		int month = Sc.nextInt();
+		int year = Sc.nextInt();
+		System.out.print("\n\t CVV : ");
+		int cvv = Sc.nextInt();
+		
+		for(int i=0 ; i<noOfCardsDistribuited ; i++) {
+			System.out.println(cardsDistribuited[i].getCardNo());
+			
+			if(cardsDistribuited[i].getCardNo() == cardNo) {
+				
+				if(cardsDistribuited[i].getCVV() == cvv) {
+						
+					// validate exipry Date
+					int pos =i;
+					return cardsDistribuited[pos];
+				}
+			}
+		}
+		return null;
 	}
 	
 	public boolean blockCard() {
@@ -171,49 +217,26 @@ public class Card {
 			return size;
 	}
 	
-	public static boolean validateCard() {
-		Scanner Sc = new Scanner(System.in);
-		boolean validCard  = false;
-		System.out.println("\t -- Fill the Card Details --");
-		System.out.print("\t Card No : ");
-		long cardNo = Sc.nextLong();
-		System.out.println(cardNo);
-		System.out.print("\t		  mm yyyy");
-		System.out.print("\n\t Valid till : ");
-		int month = Sc.nextInt();
-		int year = Sc.nextInt();
-		System.out.print("\n\t CVV : ");
-		int cvv = Sc.nextInt();
-		
-		for(int i=0 ; i<noOfCardsDistribuited ; i++) {
-			System.out.println(cardsDistribuited[i].getCardNo());
-			
-			if(cardsDistribuited[i].getCardNo() == cardNo) {
-				
-				if(cardsDistribuited[i].getCVV() == cvv) {
-						
-					// validate exipry Date
-					int pos =i;
-					validCard = true;
-					break;
-				}
-			}
-		}
-		return validCard;
+	public static long getCardBalance(Card card) {
+		return 0;
 	}
 	
 	public boolean withDrawalMoney() {
 		return true;
 	}
+
 	
-	public static void main(String Args[]) {
-		Name n = new Name();
-		Card.generateCard(1234, 2345, n);
-		Card.makeTransaction(2345);
-		
-	//	Card.generateCard(23, 23, n);
-	}
-	
+//	public static void main(String Args[]) {
+//		Name n = new Name();
+//		BSBD b = new BSBD();
+//		b.setAccBalance(12000);
+//		Card C = Card.generateCard(1234, b, n);
+//		Card.makeTransaction(2345);
+//		System.out.println("Card Balance :"+C.accountLinkedToCard.getAccBalance());
+//		System.out.println("Card Balance :"+b.getAccBalance());
+//	//	Card.generateCard(23, 23, n);
+//	}
+
 }
 
 

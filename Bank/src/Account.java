@@ -1,6 +1,6 @@
 import java.util.Scanner;
+import BasicUtilities.Name;
 
-import javax.sound.midi.Soundbank;
 
 public abstract class Account {
 	protected int accNo;
@@ -50,7 +50,8 @@ public abstract class Account {
 	public void setDateofAccountOpening(String dateofAccountOpening) {
 		this.dateofAccountOpening = dateofAccountOpening;
 	}
-	public abstract void  createAccount(); 
+	public abstract void createAccount(); 
+	public abstract void showMsg(boolean accStatus ,Name custName);
 	
 	
 	/*public abstract void manageLoans();
@@ -66,12 +67,65 @@ public abstract class Account {
 		}
 	}*/
 	
-	public static Customer setAccountDetails(Customer C) {
-		System.out.println("\n\t ~Account Details  ");
+	public boolean accountTransfer(float ammount,int accountNo) {
+		return false;
+	}
+	
+	
+	public static boolean initateAccountBalance(float minAmmount) {
+		Scanner Sc = new Scanner(System.in);
+		boolean paymentStatus = false;
+		System.out.println("\n\t Minimum Balance To Open Account Is :"+minAmmount+"\n");
+		System.out.print("\n\tAccount Opening Balance ");
+		float balance  = Sc.nextFloat();
+		do {
+			if(balance < 0) {
+				System.out.println("\t Ammount Can't Be Negative..");
+				continue;
+			}
+			else 
+				break;
+		}while(true);
 		
-		
+		do {
+			System.out.println("\n\t ````Payment Options`````");
+			System.out.print("\n\t\t D ~ Debit Card "
+					+ "\n\t\t U ~ UPI ");
+			System.out.print("\n\t Select Payment Option : ");
+			char ch = Sc.next().charAt(0);
+			switch(ch) {
+				case 'U' | 'u':
+				//	paymentStatus = UPI.makeTransaction(balance);
+				break;
+					
+				case 'D' | 'd':
+					paymentStatus = Card.makeTransaction(balance);
+				break;	
+					
+				default : 
+					System.out.println("\t Sorry..! No Such Payment Method Found ...\n\n");
+					continue;
+				}
+		if(!paymentStatus) {
+			System.out.println("\n\t Your Last Transaction Failed....");
+			System.out.println("\n\t You Would be unable to open Account if Not Deposit Initial Ammount..");
+			System.out.print("\t P - To go to Payment Options..."
+					+ "\n\t E- Exit Anyway : ");
+			String temp= Sc.next();
+			if(temp.equalsIgnoreCase("p")) 
+				continue;
+			else 
+				return false;
+		}
+		else 
+			return true;
+		}while(true);
+	}
+	
+	public static void setAccountDetails(Customer C) {
+		System.out.println("\n\t ~Account Details  \n");
 		C.setAccount(Branch.setAccountType());
 		C.account.createAccount();
-		return C;
 	}
+	
 }

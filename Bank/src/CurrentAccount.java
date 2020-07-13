@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 import BasicUtilities.Address;
+import BasicUtilities.Name;
+
 
 public class CurrentAccount extends Account{
 	public static float minBalanceToBeMaintained=5000;
@@ -53,6 +55,9 @@ public class CurrentAccount extends Account{
 					continue;
 				}
 		}while(true);
+		
+	}
+	public void showMsg(boolean accStatus,Name custName) {
 		System.out.println("\n\t Congrats....! Your Account Has Benn Open In Our Bank..."
 				+ "\n\t   Now Enjoy Unlimited Online Transactions Withou Any Charges... :) ");
 	}

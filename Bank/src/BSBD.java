@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import BasicUtilities.Name;
 
 public class BSBD  extends SavingsAccount{ 
 	/*public static float intrestRate;
@@ -11,22 +12,25 @@ public class BSBD  extends SavingsAccount{
 		chargesForNotMaintaingTheMinBalance = 80f;
 		maintenanceCharges = 150;
 	}
+	
+	public void setAccountLimitations() {
+		
+	}
 	public void createAccount() {
-		Scanner Sc = new Scanner(System.in);
-		do{
-			System.out.print("\tAmmount to Initiate Your Account..");
-			float Balance  = Sc.nextFloat();
-				if(Balance >= 1500) {
-					setAccBalance(Balance);
-					break;
-				}
-				else {
-					System.out.println("\t Minimum Ammount to Initiate Your Account is  Rs 1500/-");
-					continue;
-				}
-		}while(true);
-		System.out.println("\n\t Congrats...! Your Savings Account Has Been Created in Our Branch..! "
-				+ "\n\t Enjoy The Fantastic Features Provided AnyTime AnyWhere... :)  ");
+		Account.initateAccountBalance(minBalanceToMaintain);
+	}	
+	
+	public void showMsg(boolean accStatus , Name custName) {
+		System.out.println("\n\n\t Hey..! "+custName);
+		if(accStatus == true) {
+			System.out.println("\n\t Congrats...! Your Savings Account Has Been Created in Our Branch..! "
+				+ "\n\t Enjoy The Fantastic Features Provided AnyTime AnyWhere... :)  "
+				+ "\n\t Your Transaction Limit is Just 1 Lac per year You Can Upgrade to BSBD By Paying Rs 1500 Only.. ");
+		}
+		else {
+			System.out.println("\t We are unable to Open Your Account With the Provied Details.."
+					+ "\n\t Sorry for The inconvinience..! ");
+		}
 	}
 
 }
