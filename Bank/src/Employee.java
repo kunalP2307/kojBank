@@ -23,7 +23,7 @@ public class Employee {
 		this.noOfEmployees = noOfEmployees;
 	}
 
-	public static Employee acceptEmployeeInfo() {
+	public Employee acceptEmployeeInfo() {
 		Scanner Sc = new Scanner(System.in);
 		Employee emp = new Employee();
 		System.out.print("\n\tCompany Name : ");

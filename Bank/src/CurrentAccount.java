@@ -12,13 +12,20 @@ public class CurrentAccount extends Account{
 	public static float maxCashTransactionAmountPerDay=200000;
 	public static float chargesOrCashTransactionPer_1000Rs=1;
 	protected String profession;
-	protected Employee employeeInfo;
+	protected Object professionInfo;
 	
-	public Employee getEmployeeInfo() {
-		return employeeInfo;
+	public String getProfession() {
+		return profession;
 	}
-	public void setEmployeeInfo(Employee employeeInfo) {
-		this.employeeInfo = employeeInfo;
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
+	
+	public Object getProfessionInfo() {
+		return professionInfo;
+	}
+	public void setProfessionInfo(Object professionInfo) {
+		this.professionInfo = professionInfo;
 	}
 
 	public void createAccount() {
@@ -38,7 +45,7 @@ public class CurrentAccount extends Account{
 		switch(choice) {
 		case 1:
 			profession = CurrentAccount.professionTypes[0];	
-			setEmployeeInfo(employee.acceptEmployeeInfo());
+			setProfessionInfo(employee.acceptEmployeeInfo());
 			break;
 		case 2:
 			profession = CurrentAccount.professionTypes[1];
