@@ -26,11 +26,12 @@ public class Employee {
 	public static Employee acceptEmployeeInfo() {
 		Scanner Sc = new Scanner(System.in);
 		Employee emp = new Employee();
-		System.out.println("\tCompany Name : ");
+		System.out.print("\n\tCompany Name : ");
 		emp.setCompanyName(Sc.nextLine());
-		System.out.println("\tCompany Address : ");
+		System.out.print("\tCompany Address : ");
 		emp.setCompanyAddress(Sc.nextLine());
-		System.out.println("\tNo of Employees : ");
+		
+		System.out.print("\tNo of Employees : ");
 		emp.setNoOfEmployees(Sc.nextInt());
 		return emp;
 	}
