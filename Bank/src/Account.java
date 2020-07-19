@@ -84,7 +84,7 @@ public abstract class Account {
 	}
 	
 	
-	public static boolean initateAccountBalance(float minAmmount) {
+	public boolean initateAccountBalance(float minAmmount) {
 		Scanner Sc = new Scanner(System.in);
 		boolean paymentStatus = false;
 		System.out.println("\n\t Minimum Balance To Open Account Is :"+minAmmount+"\n");
@@ -112,6 +112,8 @@ public abstract class Account {
 					
 				case 'D' | 'd':
 					paymentStatus = Card.makeTransaction(balance);
+					if(paymentStatus)
+						setAccBalance(balance);
 				break;	
 					
 				default : 

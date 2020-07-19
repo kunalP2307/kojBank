@@ -183,11 +183,13 @@ public class Branch {
 		}catch(Exception e) {}
 		if(C.account instanceof BSBD) {
 			if(C.account.accBalance < 1500) {
+				System.out.println("\n\t Minimum Balance should be greater than 1500 to Open the acoount");
 				return false;
 			}
 		}
 		else if(C.account instanceof BSBDSS) {
 			if(C.age < 18) {
+				System.out.println("\n\t Your Age should be greater than 18 to open the Account");
 				return false;
 			}
 		}
@@ -196,6 +198,8 @@ public class Branch {
 				return false;
 			}
 		}
+		else 
+			return true;
 		return true;
 	}
 	

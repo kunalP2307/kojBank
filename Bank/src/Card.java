@@ -134,17 +134,17 @@ public class Card {
 		 }
 			
 		 	if(is_validCard != null) {
-		 		if(is_validCard.accountLinkedToCard.getAccBalance() < transactionAmmount) {
-		 			System.out.println("\n\t Sorry You Don't Have Enough Balamce To Make the Transaction...");
-		 			return false;
-		 		}
-		 		else {
+		 			if(is_validCard.accountLinkedToCard.getAccBalance() < transactionAmmount) {
+		 				System.out.println("\n\t Sorry You Don't Have Enough Balamce To Make the Transaction...");
+			 			return false;
+		 			}
 		 			is_validCard.accountLinkedToCard.setAccBalance(is_validCard.accountLinkedToCard.getAccBalance() - transactionAmmount);
 		 			// pass accNo of the Card to the method to return the account Balance..
+		 			
 		 			// show account debited by transactoionAmmount
 		 			System.out.println("Transaction Successfull..");
+		 			return true;
 		 		}
-			}
 			else if(is_validCard == null) {
 				System.out.println("\n\t Opps..! Something Went Wrong...!"
 							+"\n\t   Could Not Initiate Your Transaction.."
