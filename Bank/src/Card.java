@@ -2,18 +2,24 @@ import java.sql.Date;
 import java.util.Random;
 import java.util.Scanner;
 
+import BasicUtilities.MaskString;
 import BasicUtilities.Name;
 
 public class Card {
 	 	
 
-	public static long LastCardNo = 6522290000000000l;
-	public static int noOfCardsDistribuited = 0;
+	public static long LastCardNo = 6522290000000001l;
+	public static int noOfCardsDistribuited = 1;
 	public static Card cardsDistribuited[];
 	
 	
 	static {
-		cardsDistribuited = new Card[30];
+		cardsDistribuited = new Card[5];
+		cardsDistribuited[0] = new Card();
+		cardsDistribuited[0].accountLinkedToCard = new CurrentAccount();
+		cardsDistribuited[0].accountLinkedToCard.setAccBalance(10000);
+		cardsDistribuited[0].setCardNo(6522290000000000l);
+		cardsDistribuited[0].setCVV(123);
 	}
 	
 	protected Account accountLinkedToCard;
@@ -96,9 +102,6 @@ public class Card {
 		 */
 	}
 	
-	public static void manageCards() {
-		
-	}
 	
 	
 	public static Card generateCard(long regMobiileNo,Account accountLinkedToCard,Name nameOnCard ) {
@@ -122,7 +125,8 @@ public class Card {
 		
 	}
 	public static boolean makeTransaction(float transactionAmmount) {
-		 boolean transactionStatus = false;
+		
+		boolean transactionStatus = false;
 		 Card is_validCard= validateCard();
 		 if(transactionAmmount < 0) {
 			 System.out.println("\n\t Ammount Can't Bw Negative..!");
@@ -149,6 +153,9 @@ public class Card {
 		return transactionStatus;
 	}
 	public static Card validateCard() {
+		
+		System.out.println(cardsDistribuited[0].getCardNo());
+		System.out.println(cardsDistribuited[0].getCVV());
 		Scanner Sc = new Scanner(System.in);
 		boolean is_validCard  = false;
 		System.out.println("\t -- Fill the Card Details --\n");
@@ -224,7 +231,18 @@ public class Card {
 	public boolean withDrawalMoney() {
 		return true;
 	}
-
+	public static void showCards(Card[] cards,int noOfCardsOwned) throws Exception{
+		
+		if(noOfCardsOwned == 0) {
+			System.out.println("\t Sorry You Don't Own Any Cards"
+					+ "\n\t But You Can Apply for it In Manage Card Section ");
+		}
+		else {
+			for(int i=0; i<noOfCardsOwned ; i++) {
+				System.out.println("\t"+(i+1) +"Card Ending : "+MaskString.maskString(Long.toString(cards[i].getCardNo()), 0, 8, '*'));
+			}
+		}
+	}
 	
 //	public static void main(String Args[]) {
 //		Name n = new Name();

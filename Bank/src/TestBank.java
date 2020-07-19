@@ -1,14 +1,17 @@
 import java.util.Scanner;
 
+import BasicUtilities.Console;
+
 public class TestBank {
-	public static void main(String Args[]) throws Exception{
+	public static void main(String Args[]) throws Exception,InterruptedException {
 		Scanner Sc = new Scanner(System.in);	
 		Branch B = new Branch();
-		boolean islogedIn = false;
+		boolean islogedIn = true;
 		
 		Branch.AccountAutentication Authenticate = B.new AccountAutentication();
 		System.out.println("\t K.O.J Introduces Online Platform to Manage All yout Banking Needs.."
 				+ "\n 					From Anywhere At Anytime.. :)   ");
+	
 		do {
 			System.out.println("\n\n\t\t ~ Login (L) ");
 			System.out.println("\t\t ~ Don't Have Account "
@@ -40,6 +43,7 @@ public class TestBank {
 					continue;
 				}
 				else {
+					Console.clear();
 					System.out.println("\n\n\t Have a Nice Day..:)  ");
 					break;
 				}
@@ -52,7 +56,7 @@ public class TestBank {
 		
 	}
 	public static void AfterLogIn(Customer currentlyLogedIn) throws Exception {
-		
+		Console.clear();
 		System.out.println("------------------------------------------------------------------------------");
 		System.out.println("K.O.J Bank\n\n");
 		System.out.println("\n p ~ Profile 	f ~ Change MPIn  h ~ Need Help  l ~ logout");
@@ -84,11 +88,12 @@ public class TestBank {
 			break;
 			
 			case 'i':
-				currentlyLogedIn.investments[0].manageInvestments();
+				currentlyLogedIn.investment = new Investment();
+				currentlyLogedIn.investment.manageInvestments();
 			break;
 			
 			case 'C':
-				Card.manageCards();
+				//currentlyLogedIn.
 			break;
 			
 			case 'L':
@@ -114,11 +119,11 @@ public class TestBank {
 			break;
 			
 			case 'F':
-				currentlyLogedIn.investments[0].applyForFD();
+				//currentlyLogedIn.investments[0].applyForFD();
 			break;
 			
 			case 'R':
-				currentlyLogedIn.investments[0].applyForRD();
+				//currentlyLogedIn.investments[0].applyForRD();
 			break;
 			
 			case 'd':

@@ -16,10 +16,12 @@ public class Customer {
 	protected Account account;
 	protected Card cards[];
 	protected Loan loans[];
-	protected Investment investments[];
+	protected Investment investment;
 	protected UPI upi[];
 	protected Beneficiary beneficiary;
 	protected int nofCardsOwned = 0;
+	
+	
 	public static int LastCustNo = 1201;
 	
 	
@@ -113,7 +115,6 @@ public class Customer {
 	}
 	public void setCard(Card card,int pos) {
 		if(pos == 0) {
-			System.out.println("memory initialized");
 			this.cards = new Card[2];
 		}
 		cards[pos] = card;
@@ -203,4 +204,26 @@ public class Customer {
 		}
 	}
 	
+	public void manageCards() {
+		Scanner Sc = new Scanner(System.in);
+		System.out.println("\n\n\t-----Manage Cards------");
+		System.out.print("\n\t S ~ Show My Cards"
+				+ "\n\t B ~ Block Card "
+				+ "\n\t 	Dont Have Card "
+				+ "\n\t A ~ Apply Now :");
+		System.out.print("\n\t Select Activity : ");
+		char ch = Sc.next().charAt(0);
+		switch(ch) {
+		
+		case 's' | 'S':
+			
+		break;
+		
+		case 'b'| 'B':
+		break;
+		
+		case 'a' | 'A':
+		break;
+		}
+	}
 }
