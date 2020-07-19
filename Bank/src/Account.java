@@ -100,7 +100,6 @@ public abstract class Account {
 					break;
 			}while(true);
 		}
-		else {
 		do {
 			System.out.println("\n\t ````Payment Options`````");
 			System.out.print("\n\t\t D ~ Debit Card "
@@ -136,8 +135,6 @@ public abstract class Account {
 		else 
 			return true;
 		}while(true);
-		}
-		return true;
 	}
 	
 	public static void setAccountDetails(Customer C) {
