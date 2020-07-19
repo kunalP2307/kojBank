@@ -84,21 +84,23 @@ public abstract class Account {
 	}
 	
 	
-	public boolean initateAccountBalance(float minAmmount) {
+	public boolean initateAccountBalance(float minAmmount,int accType) {
 		Scanner Sc = new Scanner(System.in);
 		boolean paymentStatus = false;
-		System.out.println("\n\t Minimum Balance To Open Account Is :"+minAmmount+"\n");
-		System.out.print("\n\tAccount Opening Balance ");
-		float balance  = Sc.nextFloat();
-		do {
-			if(balance < 0) {
-				System.out.println("\t Ammount Can't Be Negative..");
-				continue;
-			}
-			else 
-				break;
-		}while(true);
-		
+		if(accType == 1) {
+			System.out.println("\n\t Minimum Balance To Open Account Is :"+minAmmount+"\n");
+			System.out.print("\n\tAccount Opening Balance ");
+			float balance  = Sc.nextFloat();
+			do {
+				if(balance < 0) {
+					System.out.println("\t Ammount Can't Be Negative..");
+					continue;
+				}
+				else 
+					break;
+			}while(true);
+		}
+		else {
 		do {
 			System.out.println("\n\t ````Payment Options`````");
 			System.out.print("\n\t\t D ~ Debit Card "
@@ -111,9 +113,9 @@ public abstract class Account {
 				break;
 					
 				case 'D' | 'd':
-					paymentStatus = Card.makeTransaction(balance);
+					paymentStatus = Card.makeTransaction(minAmmount);
 					if(paymentStatus)
-						setAccBalance(balance);
+						setAccBalance(minAmmount);
 				break;	
 					
 				default : 
@@ -134,6 +136,8 @@ public abstract class Account {
 		else 
 			return true;
 		}while(true);
+		}
+		return true;
 	}
 	
 	public static void setAccountDetails(Customer C) {

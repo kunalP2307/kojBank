@@ -42,7 +42,9 @@ public class FixedDeposit extends TermDeposit{
 		if(Ch.equalsIgnoreCase("Y")) {
 			System.out.print("\t Deposit Ammount :");
 			float PrincipleAmm = Sc.nextFloat();
-			setPrincipleAmmount(PrincipleAmm);
+			boolean b = initateAccountBalance(PrincipleAmm,2);
+			if(b)
+				setPrincipleAmmount(PrincipleAmm);
 			
 			setIntrestRateAndMaturity();
 			do {
@@ -163,7 +165,8 @@ public class FixedDeposit extends TermDeposit{
 
 	@Override
 	public void showMsg(boolean accStatus, Name custName) {
-		// TODO Auto-generated method stub
+		System.out.println("\n\t Stay Calm...And Earn Extra Income"
+				+ "\n\t Your Ammount is in Secure Hands...");
 		
 	}
 }

@@ -17,7 +17,7 @@ public class BSBD  extends SavingsAccount{
 		
 	}
 	public void createAccount() {
-		initateAccountBalance(minBalanceToMaintain);
+		initateAccountBalance(minBalanceToMaintain,1);
 	}	
 	
 	public void showMsg(boolean accStatus , Name custName) {

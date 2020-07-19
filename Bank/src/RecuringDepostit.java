@@ -51,7 +51,9 @@ public class RecuringDepostit extends TermDeposit{
 				System.out.print("\n\t Regular Monthly Deposit Ammount : ");
 				float Ammount = Sc.nextFloat();
 				if(Ammount >= 500) {
-					setMonthlyDepositAmmount(Ammount);
+					boolean b = initateAccountBalance(Ammount,2);
+					if(b)
+						setMonthlyDepositAmmount(Ammount);
 					break;
 				}
 				else {
@@ -146,7 +148,8 @@ public class RecuringDepostit extends TermDeposit{
 	}
 	@Override
 	public void showMsg(boolean accStatus, Name custName) {
-		// TODO Auto-generated method stub
+		System.out.println("\n\t Stay Calm...And Earn Extra Income"
+				+ "\n\t Your Ammount is in Secure Hands...");
 		
 	}
 }

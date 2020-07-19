@@ -59,7 +59,7 @@ public class CurrentAccount extends Account{
 		}
 		
 		line.drawTabLine();
-		initateAccountBalance(5000);
+		initateAccountBalance(5000,1);
 	}
 	public void showMsg(boolean accStatus,Name custName) {
 		System.out.println("\n\t Congrats....! Your Account Has Been Open In Our Bank..."
